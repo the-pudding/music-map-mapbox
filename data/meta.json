@@ -1,16 +1,16 @@
 {
-	"title": "Title Case Hed Goes Here",
-	"description": "Sentence case dek goes down here. Modify these in data/meta.json.",
+	"title": "The Cultural Borders of Songs",
+	"description": "We mapped last month’s #1 songs in 3,000 places. See where songs dominate across the globe.",
 	"site": "https://pudding.cool",
 	"siteName": "The Pudding",
-	"url": "https://pudding.cool/year/month/name/",
-	"keywords": "tk",
-	"imgFacebook": "https://pudding.cool/year/month/name/assets/social/social-facebook.jpg",
-	"imgTwitter": "https://pudding.cool/year/month/name/assets/social/social-twitter.jpg",
+	"url": "https://pudding.cool/2018/06/music-map",
+	"keywords": "music",
+	"imgFacebook": "https://pudding.cool/2018/06/music-map/assets/social/facebook.png",
+	"imgTwitter": "https://pudding.cool/2018/06/music-map/assets/social/twitter.png",
 	"author": {
-		"name": "The Pudding",
-		"url": "https://pudding.cool/author/the-pudding-team",
-		"twitterHandle": "@puddingviz"
+		"name": "Matt Daniels",
+		"url": "https://pudding.cool/author/mattd-daniels",
+		"twitterHandle": "@matthew_daniels"
 	},
 	"lorem": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mollis neque sit amet sollicitudin vehicula. Maecenas fringilla mi non lacus mattis elementum. Curabitur dignissim faucibus justo."
 }
