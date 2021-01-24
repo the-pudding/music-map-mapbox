@@ -72,7 +72,10 @@ songSelectDiv.style("transform","none")
 function init() {
 
   let dateParam = urlParam.get("date");
-
+  if(dateParam == ""){
+    dateParam = 201806
+    urlParam.set("date","201806")
+  }
   dateSet = dateParam;
 
 
