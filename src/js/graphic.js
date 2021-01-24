@@ -73,11 +73,10 @@ function init() {
 
   let dateParam = urlParam.get("date");
   if(dateParam == ""){
-    dateParam = 201806
+    dateParam = "201806";
     urlParam.set("date","201806")
   }
   dateSet = dateParam;
-
 
   styleSet = options[dateSet].style;
 
