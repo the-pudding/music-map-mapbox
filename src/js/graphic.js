@@ -9,11 +9,14 @@ let options = {
   },
   201806: {
     "style":"cjhqxa1mp2fbk2rphmmwonf3s"
+  },
+  202102: {
+    "style":"ckli7pkn71acd17paqpo4k9h1"
   }
 }
 
 let styleSet = "cjhqxa1mp2fbk2rphmmwonf3s";
-let dateSet = 201806;
+let dateSet = 202102;
 var player;
 let interval;
 var map;
@@ -73,8 +76,8 @@ function init() {
 
   let dateParam = urlParam.get("date");
   if(dateParam == ""){
-    dateParam = "201806";
-    urlParam.set("date","201806")
+    dateParam = "202102";
+    urlParam.set("date","202102")
   }
   dateSet = dateParam;
 
