@@ -15,6 +15,8 @@ let options = {
   }
 }
 
+let randomItem = null;
+let lastPoint = {};
 let styleSet = "cjhqxa1mp2fbk2rphmmwonf3s";
 let dateSet = 202102;
 var player;
@@ -110,7 +112,15 @@ function init() {
   d3.select(".top-toolbar-title-text").select("select").on("change",function(d){
     var selected = d3.select(this).property('value')
     urlParam.set("date",selected);
+    console.log(map.getCenter(),map.getZoom());
+
+    lastPoint.latitude = map.getCenter().lat;
+    lastPoint.longitude = map.getCenter().lng;
+    lastPoint.zoom = map.getZoom();
+
     switchMap(selected);
+
+
     // if(selected == "dec-2017"){
     //   window.location.href = 'https://pudding.cool/2018/01/music-map';
     // }
@@ -148,9 +158,14 @@ function switchMap(dateSet){
     clearInterval(interval);
   }
 
+  let zoomLevelStart = 3;
+  if(Object.keys(lastPoint).length > 0){
+    zoomLevelStart = lastPoint.zoom;
+  }
+
   map = new mapboxgl.Map({
       container: 'map',
-      zoom: 3,
+      zoom: zoomLevelStart,
       style: 'mapbox://styles/dock4242/'+options[dateSet].style,
       // pitch:50,
       hash: false,
@@ -168,8 +183,6 @@ function switchMap(dateSet){
 
   var done = false;
 
-  console.log(dateSet);
-
   d3.csv("assets/data/geo_info.csv",function(geo_info){
   d3.csv("assets/data/"+dateSet+"/track_info.csv",function(track_data){
   d3.csv("assets/data/"+dateSet+"/city_data.csv",function(city_data){
@@ -182,8 +195,18 @@ function switchMap(dateSet){
 
     var trackInfoNameMap = d3.map(track_data,function(d){return d.track_name});
 
-     var randomItem = country_data[Math.round(Math.random()*country_data.length)]
-     map.setCenter([randomItem["longitude"], randomItem["latitude"]]);
+    if(!randomItem){
+      randomItem = country_data[Math.round(Math.random()*country_data.length)]
+    }
+
+
+    if(Object.keys(lastPoint).length > 0){
+      map.setCenter([lastPoint["longitude"], lastPoint["latitude"]]);
+    }
+    else {
+      map.setCenter([randomItem["longitude"], randomItem["latitude"]]);
+    }
+
 
     var aOneMap = d3.map(aOneLookup,function(d){return d.id;});
     var aZeroMap = d3.map(aZeroLookup,function(d){return d.id;});
@@ -291,8 +314,6 @@ function switchMap(dateSet){
       return d.key;
     });
 
-
-
     var labelColors = colorsManual.map(function(d,i){
       return [topSongs[i],d3.color(d.fill).darker().toString()]
     })
@@ -361,8 +382,6 @@ function switchMap(dateSet){
     var topByCountry = country_data.map(function(d){
       return {key:d.iso,value:d.track_name};
     })
-
-    console.log(topByCountry);
 
     var topByAdminOne = d3.nest().key(function(d){
         return d.boundaries_admin_1;
@@ -920,11 +939,9 @@ function switchMap(dateSet){
             }
 
           });
-
         }
 
         var markerTimeout = false;
-
 
         function updateMapOnSongClick(){
           showToolTip();
@@ -979,12 +996,12 @@ function switchMap(dateSet){
 
               flying = false;
             })
-            if(!mobile){
-              player.loadVideoById(trackLink);
-            }
-            else{
-              player.cueVideoById(trackLink)
-            }
+            // if(!mobile){
+            //   player.loadVideoById(trackLink);
+            // }
+            // else{
+            player.cueVideoById(trackLink)
+            // }
 
             updateMapOnSongClick();
           }
@@ -1016,12 +1033,12 @@ function switchMap(dateSet){
                 flying = false;
               })
 
-              if(!mobile){
-                player.loadVideoById(trackLink);
-              }
-              else{
-                player.cueVideoById(trackLink)
-              }
+              // if(!mobile){
+              //   player.loadVideoById(trackLink);
+              // }
+              // else{
+              player.cueVideoById(trackLink)
+              // }
               updateMapOnSongClick();
             }
           }
@@ -1221,7 +1238,7 @@ function switchMap(dateSet){
           allStarted = true;
           var trackLink = randomItem.track_link.replace("https://www.youtube.com/watch?v=","");
 
-          var startButtonText = startButton.select(".start-button-play-text").text("Play #1 In "+randomItem.country_name);
+          var startButtonText = startButton.select(".start-button-play-text").text("View #1 In "+randomItem.country_name);
           var startButtonSvg = startButton.select(".start-button-play-icon").style("display","block");
 
           map.flyTo({
@@ -1252,7 +1269,7 @@ function switchMap(dateSet){
 
           })
 
-          if(startModal.style("display") == "none"){
+          if(startModal.style("display") == "none" && Object.keys(lastPoint).length == 0){
 
             map.flyTo({
                 zoom: 3
@@ -1267,7 +1284,6 @@ function switchMap(dateSet){
 
             startSequence();
           }
-
 
           function startSequence(){
 
@@ -1290,7 +1306,7 @@ function switchMap(dateSet){
 
             toolTipVisible = true;
             if(!mobile){
-              player.loadVideoById(trackLink);
+              player.cueVideoById(trackLink);
             }
 
             markerText.text("#1 in "+randomItem.country_name+" - "+randomItem.track_name)
@@ -1349,7 +1365,7 @@ function switchMap(dateSet){
                 artistSelected = trackInfoNameMap.get(d3.select(this).datum()[0]).artist_name;
                 var track_link = trackInfoNameMap.get(d3.select(this).datum()[0]).track_link;
                 if(track_link){
-                  player.loadVideoById(track_link);
+                  player.cueVideoById(track_link);
                 }
                 songSelectDiv.style("transform",null)
                 songToolbarInfoTitle.text(function(d){

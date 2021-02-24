@@ -222,19 +222,19 @@ p.player-track-info-stats-local {}
 
 .top-toolbar-logo-wrapper {
     display: flex;
-    width: 136px;
-    display: none;
 }
 
 .top-toolbar-logo-text {
-    margin-top: 13px;
     font-family: 'Atlas Grotesk Web';
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: .4px;
-    margin-left: 9px;
+    align-self:center;
+    margin-right: 10px;
     color: black;
-    display:none;
+}
+
+.top-toolbar-logo-text a{
+    text-decoration:underline;
 }
 
 .top-toolbar-title-text {
@@ -294,11 +294,9 @@ p.player-track-info-stats-local {}
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
-    display: none;
 }
 
 .top-toolbar-logo-wrapper a {
-    text-decoration: none;
     color: black;
     border:none;
 }
@@ -368,8 +366,6 @@ p.player-track-info-stats-local {}
     text-decoration: none;
     padding-right: 14px;
     font-weight: 500;
-    letter-spacing: 1px;
-    margin-top: 4px;
     cursor: hand;
     cursor: pointer;
 }
@@ -414,7 +410,6 @@ p.player-track-info-stats-local {}
 }
 
 .top-toolbar-volume {
-    border-left: 2px solid #EBEBEB;
     margin-right: 2px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -444,6 +439,7 @@ p.player-track-info-stats-local {}
     display: flex;
     margin-left: 1rem;
     align-self:center;
+    display:none;
 }
 
 .top-toolbar-song-pause-play svg {
@@ -568,6 +564,7 @@ p.player-track-info-stats-local {}
 .song-filter {
     position: absolute;
     top: 0px;
+    display: none;
     right: 91px;
     margin: 0 auto;
     width: 203px;
@@ -1225,7 +1222,6 @@ p.player-track-info-stats-local {}
      display: none;
    }
   .top-toolbar-left{
-    width: 147px;
   }
   .song-filter{
     display: none;
@@ -1256,10 +1252,10 @@ p.player-track-info-stats-local {}
   }
   .top-toolbar-logo-wrapper{
     /* display: none; */
-    width: 109px;
+
   }
   .top-toolbar-logo-text{
-    display: none;
+    font-size:12px;
   }
   .top-toolbar-logo-svg{
     margin-top: 0px;
@@ -1292,4 +1288,14 @@ p.player-track-info-stats-local {}
 
 html {
   height:100%;
+}
+
+
+@media (max-width:390px) {
+  .top-toolbar-left {
+    display:none;
+  }
+  .top-toolbar-title{
+    padding:0;
+  }
 }
