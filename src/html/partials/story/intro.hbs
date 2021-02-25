@@ -3,33 +3,33 @@
     <div class="start-modal-logo-row">
       <div class="start-modal-logo-svg">
         <a href="/">
-          <img inline src='pudding/wordmark.svg'>
+          <img inline src='pudding/wordmark_2.svg'>
         </a>
       </div>
       <p>PRESENTS</p>
     </div>
-    <p class="start-modal-title-row">Music Borders
-    </p>
+    <h1 class="start-modal-title-row">Music Borders
+    </h1>
     <p class="start-modal-subtitle-row">We mapped last month’s #1 songs in 3,000 places. See where songs dominate across the globe.
     </p>
-    <div class="start-button">
+    <button class="start-button" tabindex="0">
       <div class="start-button-contents">
-        <div class="start-button-play-icon">
+        <!-- <div class="start-button-play-icon">
           <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 82.76 103.45" x="0px" y="0px">
             <polygon class="player-play" points="60.3 40.75 31.94 57.13 31.94 24.37 60.3 40.75"/>
           </svg>
-        </div>
+        </div> -->
         <div class="start-button-play-text">LOADING
         </div>
       </div>
       <!-- <p class="start-button-note">(YEA THERE’S AUDIO)
       </p> -->
-    </div>
+    </button>
   </div>
 </div>
 <div class="info-modal">
   <a class="pudding-link" href="/">
-    <img inline src='pudding/wordmark.svg'>
+    <img inline src='pudding/wordmark_2.svg'>
   </a>
   <p class="info-modal-source">All data is from YouTube.</p>
   <p class="info-modal-icons">Play Button icon is by James Keane. Volume Icons are by Tracy Tam.</p>
@@ -62,9 +62,9 @@
 		</div>
 	</div>
 </div>
-<div class="player-fixed">
+<div class="player-fixed" role="video player">
 </div>
-<div class="tool-bar-right">
+<div class="tool-bar-right" role="filter toolbar">
   <div class="tool-bar-right-title">
     <p class="tool-bar-right-title-vert">Songs</p>
     <p class="tool-bar-right-title-horz">Top Songs by Global Views/Streams</p>
@@ -78,7 +78,7 @@
     <input class="song-filter-box" type="checkbox">
   </div>
 </div>
-<div class="top-toolbar">
+<div class="top-toolbar" role="header">
   <div class="top-toolbar-left">
     <div class="top-toolbar-logo-wrapper">
       <a href="/"><div class="top-toolbar-logo-svg">
@@ -132,8 +132,7 @@
         </svg>
       </div></a>
       <p class="top-toolbar-logo-text">
-      <a href="/">The Pudding
-      </a> Presents: </p>
+      <a href="/">The Pudding</a> Presents: </p>
     </div>
     <div class="top-toolbar-search">
       <div class="top-toolbar-search-icon">
@@ -209,7 +208,7 @@
     </div>
   </div>
 </div>
-<div id='map'></div>
+<div id='map' role="main"></div>
 <div class="map-tool-tip">
   <p class="map-tool-tip-geo"></p>
 </div>

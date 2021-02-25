@@ -1081,7 +1081,9 @@ function switchMap(dateSet){
 
         var playerElement = playerElementWrapper.append("iframe")
           .attr("id","player")
-          .attr("src","https://www.youtube.com/embed/"+trackLink+"?enablejsapi=1&amp;enablejsapi=true&amp;playsinline=1&autoplay=0")
+          .attr("title","YouTube video of top song in country")
+          .attr("title","YouTube video of top song in country")
+          .attr("src","https://www.youtube.com/embed/"+trackLink+"?enablejsapi=1&amp;enablejsapi=true&amp;playsinline=1&autoplay=0&cc_load_policy=1")
           .attr("frameborder","0")
           .property("allowfullscreen",true)
           ;
