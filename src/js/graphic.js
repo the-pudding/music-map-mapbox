@@ -12,13 +12,16 @@ let options = {
   },
   202102: {
     "style":"ckli7pkn71acd17paqpo4k9h1"
+  },
+  202103: {
+    "style":"ckmz8449o1e7717nt72yec910"
   }
 }
 
 let randomItem = null;
 let lastPoint = {};
-let styleSet = "cjhqxa1mp2fbk2rphmmwonf3s";
-let dateSet = 202102;
+let styleSet = "ckmz8449o1e7717nt72yec910";
+let dateSet = 202103;
 var player;
 let interval;
 var map;
@@ -78,8 +81,8 @@ function init() {
 
   let dateParam = urlParam.get("date");
   if(dateParam == ""){
-    dateParam = "202102";
-    urlParam.set("date","202102")
+    dateParam = "202103";
+    urlParam.set("date","202103")
   }
   dateSet = dateParam;
 
@@ -971,8 +974,13 @@ function switchMap(dateSet){
             var trackData = features[0].properties;
 
             console.log(trackData);
-
-            var trackLink = trackData.track_link.replace("https://www.youtube.com/watch?v=","");
+            let trackLink = null;
+            if(trackData.hasOwnProperty('track_link')){
+              trackLink = trackData.track_link.replace("https://www.youtube.com/watch?v=","");
+            }
+            else if(trackData.hasOwnProperty('track_id')){
+              trackLink = trackData.track_id.replace("https://www.youtube.com/watch?v=","");
+            }
             marker.setLngLat([trackData["longitude"],trackData["latitude"]])
             if(!mobile){
               playerElementWrapper.classed("player-fixed-moved",true);
