@@ -14,7 +14,7 @@ let options = {
     "style":"ckli7pkn71acd17paqpo4k9h1"
   },
   202103: {
-    "style":"ckmz8449o1e7717nt72yec910"
+    "style":"ckn0g0hiw0w4b17p9xkrptapp"
   }
 }
 
@@ -687,6 +687,8 @@ function switchMap(dateSet){
         var lineWidthBig = 1;
         var lineWidthSmall = 1;
         var fillOpacity = 1;
+
+        console.log(countryStopsFill);
 
         map.addLayer({
           "id": "admin-0-fill",
