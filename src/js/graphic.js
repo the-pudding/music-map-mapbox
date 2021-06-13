@@ -15,13 +15,16 @@ let options = {
   },
   202103: {
     "style":"ckn0g0hiw0w4b17p9xkrptapp"
+  },
+  202106: {
+    "style":"ckpvpgrem0yws17ogodawlugq"
   }
 }
 
 let randomItem = null;
 let lastPoint = {};
 let styleSet = "ckmz8449o1e7717nt72yec910";
-let dateSet = 202103;
+let dateSet = 202106;
 var player;
 let interval;
 var map;
@@ -81,8 +84,8 @@ function init() {
 
   let dateParam = urlParam.get("date");
   if(dateParam == ""){
-    dateParam = "202103";
-    urlParam.set("date","202103")
+    dateParam = "202106";
+    urlParam.set("date","202106")
   }
   dateSet = dateParam;
 
@@ -687,8 +690,6 @@ function switchMap(dateSet){
         var lineWidthBig = 1;
         var lineWidthSmall = 1;
         var fillOpacity = 1;
-
-        console.log(countryStopsFill);
 
         map.addLayer({
           "id": "admin-0-fill",
