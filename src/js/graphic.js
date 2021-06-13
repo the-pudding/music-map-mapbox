@@ -23,7 +23,7 @@ let options = {
 
 let randomItem = null;
 let lastPoint = {};
-let styleSet = "ckmz8449o1e7717nt72yec910";
+let styleSet = "ckpvpgrem0yws17ogodawlugq";
 let dateSet = 202106;
 var player;
 let interval;
